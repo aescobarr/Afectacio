@@ -1,2 +1,4 @@
 build/
 dist/
+AfectacioBosc/web/WEB-INF/hibernate.properties
+AfectacioBosc/web/WEB-INF/hibernateMontesData.properties
