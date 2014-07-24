@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+        <property name="filterInvocationDefinitionSource">
+            <value>
+                CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                PATTERN_TYPE_APACHE_ANT
+                /**=httpSessionContextIntegrationFilter,formAuthenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor,logoutFilter
+            </value>
+        </property>
+    </bean>
+    <bean id="formAuthenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+        <property name="filterProcessesUrl">
+            <value>/seguretat/j_acegi_security_check</value>
+        </property>
+        <property name="authenticationFailureUrl">
+            <value>/index.htm?login_error=1</value>
+        </property>
+        <property name="defaultTargetUrl">
+            <value>/general/menuinicial.htm</value>
+        </property>
+        <property name="authenticationManager">
+            <ref bean="authenticationManager" />
+        </property>
+    </bean>
+    <bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter"></bean>
+    <bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+        <property name="authenticationEntryPoint">
+            <ref bean="formLoginAuthenticationEntryPoint" />
+        </property>
+    </bean>
+    <bean id="filterSecurityInterceptor" class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+        <property name="authenticationManager">
+            <ref bean="authenticationManager" />
+        </property>
+        <property name="accessDecisionManager">
+            <ref bean="accessDecisionManager" />
+        </property>
+        <property name="objectDefinitionSource">
+            <value>
+                CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                PATTERN_TYPE_APACHE_ANT
+                /secure/admin/*=ROLE_ADMIN
+                /secure/app/*=ROLE_USER
+                /processionaria/*=ROLE_AFECTACIO
+                /processionaria/edicio/inserir.htm=ROLE_AFECTACIO
+                /processionaria/edicio/editar.htm=ROLE_AFECTACIO
+                /processionaria/edicio/esborrar.htm=ROLE_ESBORRAR_PROC
+                /nevades/*=ROLE_AFECTACIO
+                /nevades/edicio/inserir.htm=ROLE_AFECTACIO
+                /nevades/edicio/editar.htm=ROLE_AFECTACIO
+                /nevades/edicio/esborrar.htm=ROLE_ESBORRAR_NEVADA
+                /sequeres/*=ROLE_AFECTACIO
+                /sequeres/edicio/inserir.htm=ROLE_AFECTACIO
+                /sequeres/edicio/editar.htm=ROLE_AFECTACIO
+                /sequeres/edicio/esborrar.htm=ROLE_ESBORRAR_SEQUERA
+<!--                /danysmecanics/*=ROLE_AFECTACIO
+                /danysmecanics/edicio/inserir.htm=ROLE_AFECTACIO
+                /danysmecanics/edicio/editar.htm=ROLE_AFECTACIO
+                /danysmecanics/edicio/esborrar.htm=ROLE_ESBORRAR_DANYMECANIC-->
+                /danysabiotics/*=ROLE_AFECTACIO
+                /danysabiotics/edicio/inserir.htm=ROLE_AFECTACIO
+                /danysabiotics/edicio/editar.htm=ROLE_AFECTACIO
+                /danysabiotics/edicio/esborrar.htm=ROLE_ESBORRAR_DANYABIOTIC
+                /general/*=ROLE_AFECTACIO
+            </value>
+        </property>
+    </bean>
+    <bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+        <property name="providers">
+            <list>
+                <ref bean="daoAuthenticationProvider" />
+            </list>
+        </property>
+    </bean>
+    <!--bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService">
+            <ref bean="sipanAuthenticationDao" />
+        </property>
+    </bean-->
+    <bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService">
+            <ref bean="sipanAuthenticationService" />
+        </property>
+    </bean>
+    <bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
+        <property name="decisionVoters">
+            <list>
+                <ref bean="roleVoter" />
+            </list>
+        </property>
+    </bean>
+    <bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter">
+        <property name="rolePrefix">
+            <value>ROLE_</value>
+        </property>
+    </bean>
+    <bean id="formLoginAuthenticationEntryPoint" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+        <property name="loginFormUrl">
+            <value>/index.htm</value>
+        </property>
+        <property name="forceHttps">
+            <value>false</value>
+        </property>
+    </bean>
+    <bean id="sipanAuthenticationService" class="cat.creaf.mseguretat_www.SIPANUserDetailsService">
+        <property name="seguretatServei">
+            <ref local="seguretatServei"/>
+        </property>
+    </bean>
+
+    <bean id="seguretatServei" class="cat.creaf.mseguretat_www.SeguretatServei">
+        <property name="seguretatDAO" ref="seguretatDAO"/>
+    </bean>
+
+    <bean id="seguretatDAO" class="cat.creaf.mseguretatdaohibernate.SeguretatDAOHibernate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+    <bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+        <constructor-arg value="/index.htm?idioma=ca_ES" />
+        <constructor-arg>
+            <list>
+                <bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl"  value="/seguretat/j_acegi_logout" />
+    </bean>
+</beans>

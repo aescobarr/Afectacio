@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+/* Segons pàgina http://developer.yahoo.com/yui/examples/tabview/skinning.html */
+
+/*************** SIPAN_MINTEGRADOR *****************************************************************************/
+.yui-skin-sam .sipan_mintegrador .yui-navset .yui-nav{ /* protect nested tabviews from other orientations */
+                                                       border-bottom:solid #630000; /* color between tab list and content */
+}
+.yui-skin-sam .sipan_mintegrador .yui-navset .yui-nav a{
+    background:#CCCCCC;
+}
+.yui-skin-sam .sipan_mintegrador .yui-navset .yui-nav .selected a{
+    background:#630000;
+}
+.yui-skin-sam .sipan_mintegrador .yui-navset .yui-nav .selected a,
+.yui-skin-sam .sipan_mintegrador .yui-navset .yui-nav .selected a em {
+    border-color:#630000; /* selected tab border color */
+}
+
+/*************** SIPAN_MACTUACIONS *****************************************************************************/
+.yui-skin-sam .sipan_mactuacions .yui-navset .yui-nav{ /* protect nested tabviews from other orientations */ 
+                                                       border-bottom:solid #2145A5; /* color between tab list and content */
+} 	
+.yui-skin-sam .sipan_mactuacions .yui-navset .yui-nav a{
+    background:#CCCCCC;
+}
+.yui-skin-sam .sipan_mactuacions .yui-navset .yui-nav .selected a{
+    background:#2145A5;
+}
+.yui-skin-sam .sipan_mactuacions .yui-navset .yui-nav .selected a, 
+.yui-skin-sam .sipan_mactuacions .yui-navset .yui-nav .selected a em { 
+    border-color:#0033CC; /* selected tab border color */
+}
+
+/*************** SIPAN_MENPS *****************************************************************************/
+/* TABVIEW */
+.yui-skin-sam .sipan_menps .yui-navset .yui-nav{ /* protect nested tabviews from other orientations */ 
+                                                 border-bottom:solid #006600; /* color between tab list and content */
+} 	
+.yui-skin-sam .sipan_menps .yui-navset .yui-nav a{
+    background:#CCCCCC;
+}
+.yui-skin-sam .sipan_menps .yui-navset .yui-nav .selected a{
+    background:#006600;
+}
+.yui-skin-sam .sipan_menps .yui-navset .yui-nav .selected a, 
+.yui-skin-sam .sipan_menps .yui-navset .yui-nav .selected a em { 
+    border-color:#006600; /* selected tab border color */
+}
+/* CAROUSEL */
+.yui-carousel{
+    width: 700px;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    display:table;
+}
+.yui-carousel-element{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    display:table;
+}
+.yui-carousel-element .item{
+    margin-left: auto;
+    margin-right: auto;
+    display:table;
+    width: 200px;
+    height: 270px;
+}
+.yui-carousel-element .yui-carousel-item-selected {
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    background-color:#DBFFB3;    
+    display:table;
+}
+.yui-carousel-element li{
+    vertical-align: middle;
+    display:table-cell;        
+}
+.yui-carousel-element li h4{
+    font-style: italic;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-weight:normal;
+    margin-top: 3px;
+}
+.yui-carousel-element li img{
+    border: 10px solid grey;
+}
+
+
+/*************** TOTS ELS MÒDULS *****************************************************************************/	
+.yui-skin-sam .yui-navset .yui-content { 
+    background:#EEEEEE; /* content background color */
+}
+

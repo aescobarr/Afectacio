@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
+
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <!--
+        El paràmetre que espera l'interceptor es diu idioma, i pot tenir
+        els valors que ténen els fitxers de propietats, p.ex es_ES o ca_ES
+        Establim l'idioma inicial al redirect.jsp
+        -->
+        <property name="paramName" value="idioma"/>
+    </bean>
+
+    <!-- Internacionalització - resolver. S'encarrega de desar i mantenir el locale a la sessió -->
+    <!-- Declare the Resolver -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="openSessionInViewInterceptor"/>
+                <ref bean="localeChangeInterceptor"/>
+            </list>
+        </property>
+        <property name="mappings">
+            <props>
+                <prop key="/index.htm">indexController</prop>
+                <!--prop key="/seguretat/login.htm">loginController</prop>
+                <prop key="/seguretat/logout.htm">logoutController</prop-->
+                <prop key="/processionaria/edicio/inserir.htm">processionariaController</prop>
+                <prop key="/processionaria/edicio/editar.htm">processionariaController</prop>
+                <prop key="/processionaria/edicio/esborrar.htm">esborrarAfectacioController</prop>
+                <prop key="/processionaria/llistarprocessionariesjson.htm">llistarProcessionariesJSONController</prop>
+                <prop key="/processionaria/llistarprocessionaries.htm">llistarProcessionaries</prop>
+                <prop key="/processionaria/imprimirprocessionaria.htm">imprimirAfectacioController</prop>
+                <prop key="/processionaria/ajuda.htm">ajudaProcessionariaController</prop>
+                <prop key="/nevades/llistarnevadesjson.htm">llistarNevadesJSONController</prop>
+                <prop key="/nevades/llistarnevades.htm">llistarNevades</prop>
+                <prop key="/nevades/imprimirnevades.htm">imprimirAfectacioController</prop>
+                <prop key="/nevades/edicio/inserir.htm">nevadaController</prop>
+                <prop key="/nevades/edicio/editar.htm">nevadaController</prop>
+                <prop key="/nevades/edicio/esborrar.htm">esborrarAfectacioController</prop>
+                <prop key="/sequeres/llistarsequeresjson.htm">llistarSequeresJSONController</prop>
+                <prop key="/sequeres/llistarsequeresxls.htm">llistarSequeresXLSController</prop>
+                <prop key="/sequeres/llistarsequeres.htm">llistarSequeres</prop>
+                <prop key="/sequeres/imprimirsequeres.htm">imprimirAfectacioController</prop>
+                <prop key="/sequeres/llistarfotossequerajson.htm">llistarFotosSequeraController</prop>
+                <prop key="/sequeres/edicio/inserir.htm">sequeraController</prop>
+                <prop key="/sequeres/edicio/editar.htm">sequeraController</prop>
+                <prop key="/sequeres/edicio/esborrar.htm">esborrarAfectacioController</prop>
+                <prop key="/sequeres/edicio/esborrarfoto.htm">esborrarFotoController</prop>
+<!--                <prop key="/danysmecanics/llistardanysmecanicsjson.htm">llistarDanysMecanicsJSONController</prop>
+                <prop key="/danysmecanics/llistardanysmecanicsxls.htm">llistarDanysMecanicsXLSController</prop>
+                <prop key="/danysmecanics/llistardanysmecanics.htm">llistarDanysMecanics</prop>
+                <prop key="/danysmecanics/imprimirdanysmecanics.htm">imprimirAfectacioController</prop>
+                <prop key="/danysmecanics/edicio/inserir.htm">danyMecanicController</prop>
+                <prop key="/danysmecanics/edicio/editar.htm">danyMecanicController</prop>
+                <prop key="/danysmecanics/edicio/esborrar.htm">esborrarAfectacioController</prop>-->
+                <prop key="/danysabiotics/llistardanysabioticsjson.htm">llistarDanysAbioticsJSONController</prop>
+                <prop key="/danysabiotics/llistardanysabioticsxls.htm">llistarDanysAbioticsXLSController</prop>
+                <prop key="/danysabiotics/llistardanysabiotics.htm">llistarDanysAbiotics</prop>
+                <prop key="/danysabiotics/imprimirdanysabiotics.htm">imprimirAfectacioController</prop>
+                <prop key="/danysabiotics/edicio/inserir.htm">danyAbioticController</prop>
+                <prop key="/danysabiotics/edicio/editar.htm">danyAbioticController</prop>
+                <prop key="/danysabiotics/edicio/esborrar.htm">esborrarAfectacioController</prop>
+                <prop key="/general/llistarlimitsadministratius.htm">llistarLimitsAdministratiusController</prop>
+                <prop key="/general/llistarespeciesjson.htm">llistarEspeciesJSONController</prop>
+                <prop key="/general/menuinicial.htm">menuInicialController</prop>
+                <prop key="/general/visualitzarfoto.htm">visualitzarFotoController</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <bean id="resolverErrorGeneral" name="resolverErrorGeneral" class="MGeneral_www.controller.ResolverErrorGeneral">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.transaction.TransactionSystemException">Errors/errorBD</prop>
+                <prop key="java.lang.Exception">Errors/error</prop>
+                <prop key="MSeguretatExcepcions.FaltenPermisosException">sensePermisos</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+    <bean name="menuInicialController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="menuInicial" />
+
+    <bean name="loginController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Login/login" />
+
+    <bean name="logoutController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Login/logout" />
+
+
+    <bean name="processionariaController" class="cat.creaf.afectaciobosc.www.controllers.ProcessionariaController" p:afectacioService-ref="afectacioServei"/>
+    
+    <bean name="ajudaProcessionariaController" class="cat.creaf.afectaciobosc.www.controllers.AjudaProcessionariaController"/>
+
+    <bean name="llistarProcessionariesJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarProcessionariaJSONController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarProcessionaries" class="cat.creaf.afectaciobosc.www.controllers.LlistarProcessionariaController" p:afectacioService-ref="afectacioServei"/>
+        
+    <bean name="imprimirAfectacioController" class="cat.creaf.afectaciobosc.www.controllers.ImprimirAfectacioController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarNevadesJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarNevadesJSONController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarNevades" class="cat.creaf.afectaciobosc.www.controllers.LlistarNevadesController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="nevadaController" class="cat.creaf.afectaciobosc.www.controllers.NevadaController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarSequeresJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarSequeresJSONController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarSequeresXLSController" class="cat.creaf.afectaciobosc.www.controllers.LlistarSequeresXLSController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarSequeres" class="cat.creaf.afectaciobosc.www.controllers.LlistarSequeresController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="sequeraController" class="cat.creaf.afectaciobosc.www.controllers.SequeraController" p:afectacioService-ref="afectacioServei"/>
+    
+    <bean name="llistarFotosSequeraController" class="cat.creaf.afectaciobosc.www.controllers.LlistarFotosSequeraJSONController" p:afectacioService-ref="afectacioServei"/>
+<!--
+    <bean name="llistarDanysMecanicsJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysMecanicsJSONController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarDanysMecanicsXLSController" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysMecanicsXLSController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarDanysMecanics" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysMecanicsController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="danyMecanicController" class="cat.creaf.afectaciobosc.www.controllers.DanyMecanicController" p:afectacioService-ref="afectacioServei"/>-->
+    
+    <bean name="visualitzarFotoController" class="cat.creaf.afectaciobosc.www.controllers.VisualitzarFotoController" p:afectacioService-ref="afectacioServei"/>
+    
+    <bean name="esborrarFotoController" class="cat.creaf.afectaciobosc.www.controllers.EliminarFotoController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarDanysAbioticsJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysAbioticsJSONController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarDanysAbioticsXLSController" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysAbioticsXLSController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarDanysAbiotics" class="cat.creaf.afectaciobosc.www.controllers.LlistarDanysAbioticsController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="danyAbioticController" class="cat.creaf.afectaciobosc.www.controllers.DanyAbioticController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="esborrarAfectacioController" class="cat.creaf.afectaciobosc.www.controllers.EliminarAfectacioController" p:afectacioService-ref="afectacioServei"/>
+
+    <bean name="llistarLimitsAdministratiusController" class="cat.creaf.afectaciobosc.www.controllers.LlistarLimitsAdministratiusController" p:SIPANService-ref="SIPANService"/>
+
+    <bean name="llistarEspeciesJSONController" class="cat.creaf.afectaciobosc.www.controllers.LlistarEspeciesJSONController" p:afectacioService-ref="afectacioServei"/>
+
+</beans>

@@ -1,0 +1,401 @@
+.mprocessionaria{
+    border-color: #512000;
+    background-color: #fae1b0;
+}
+.mprocessionaria h2{
+    background-color: #fae1b0;
+    color: #512000;
+
+}
+
+.msequera{
+    border-color: #512000;
+    background-color: #d7fcd9;
+}
+.msequera h2{
+    background-color: #d7fcd9;
+    color: #512000;
+
+}
+
+.mdanysabiotics {
+    border-color: #512000;
+    background-color: white;
+}
+.mdanysabiotics h2{
+    background-color: white;
+    color: #512000;
+
+}
+
+.login_inici a:hover{
+    padding: 3px;
+    background-color:#aeaaaa;
+}
+div.diventradaDades{
+    /*float:left;*/
+    width:425px;
+    height:550px;
+    padding-top: 3px;
+
+   /* border: 1px solid #512000;*/
+}
+div.diventradaDades h3{
+    text-decoration:underline;
+}
+
+div.divmapa{
+    width: 500px;
+    height: 550px;
+    float:right;
+    background-color: white;
+    
+}
+
+div.divbotonou{
+    cursor: pointer;
+    position:relative;
+    top:200px;
+    left:160px;
+    
+}
+img#boto_processionaria{
+    cursor:pointer;
+}
+.mapafectacio {
+    width: 500px;
+    height: 470px;
+    margin-left:0px;
+}
+.diventradaDades{
+    margin-top: 0px;      
+}
+.diventradaDades h3{
+    margin-top: 0px;    
+}
+
+.diventradaDades td{
+    border: none;
+}
+
+table.blanc{
+    border: 0px;
+}
+
+table.blanc tr{
+    border: 0px;
+}
+
+table.blanc tr td{
+    border: 0px;
+}
+
+.campformulari{
+    display: table;
+    /*width: 325px;*/
+    margin-bottom: 2px;
+    
+}
+.campformulari .etiqueta{
+    display: table-cell;
+    text-align: right;
+    margin-right: 4px;
+    font-weight:bold;
+    vertical-align:top;
+    width:150px;
+}
+.campformulari .entradadades{ 
+    display: table-cell;    
+    /*width: 200px;*/
+    margin-left: 4px;
+    text-align:left;
+}
+.campformulari .entradadades select{
+        /*width: 194px;*/
+    margin-left: 7px;
+}
+.campformulari .entradadades input{
+   /*     width: 80px;*/
+    margin-left: 7px;
+}
+.campformulari .entradadades textarea{
+/*        width: 190px;*/
+    margin-left: 7px;
+}
+
+
+.mdanysabiotics div.campformulari{
+    display:block;
+    text-align:left;
+    width:830px;
+}
+
+.mdanysabiotics div.campformulari div.etiqueta{
+    width:220px;
+    vertical-align:top;
+    display:inline-block;
+    text-align:right;
+    margin-right: 5px;
+}
+
+.mdanysabiotics div.campformulari div.entradadades{
+    width:605px;
+    vertical-align:top;
+    display:inline-block;
+    margin:0px;
+    margin-bottom: 2px;
+}
+
+.mdanysabiotics .campformulari .entradadades .moltpetit{
+    width:100px;
+}
+
+.mdanysabiotics .campformulari .entradadades .petit{
+    width:250px;
+}
+
+.mdanysabiotics .campformulari .entradadades .mitja{
+    width:450px;
+}
+
+.mdanysabiotics .campformulari .entradadades .gran{
+    width:605px;
+}
+
+.mdanysabiotics .campformulari .entradadades .complet{
+    width:100%;
+}
+
+.mdanysabiotics h3{
+    margin-top: 0px;
+    background-color: #cccccc;
+    font-size: medium;
+}
+
+.mdanysabiotics h4{
+    margin-top: 0px;
+    text-decoration:underline;
+}
+
+
+.control_mapa_processionaria{    
+    display: table;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    
+    width: 325px;
+}
+.control_mapa_processionaria .bloc_control_mapa{
+    width: 125px;
+    display: table-row;
+    margin-bottom: 5px;
+    
+}
+
+.control_mapa_processionaria .bloc_control_mapa .etiqueta_bloc_control_mapa{
+    width: 108px;
+    display: table-cell;    
+    text-align:right;
+    font-weight: bold;
+}
+.control_mapa_processionaria .bloc_control_mapa .control_mapa{    
+    display: table;
+    vertical-align:middle;
+    text-align: left;
+    margin-top: 3px;
+}
+.control_mapa_processionaria .bloc_control_mapa .control_mapa input{
+    display: inline;
+    vertical-align: top;    
+    vertical-align:middle;
+    margin-left:7px;
+    margin-right:2px;
+}
+
+.control_mapa input[type="text"]{
+    display: table-cell;
+    vertical-align: top;
+    vertical-align:middle;
+    
+    width:70px;
+    margin-left:5px;
+    margin-right:2px;    
+}
+
+.control_mapa_processionaria .bloc_control_mapa .control_mapa label{
+        display: table-cell;
+    vertical-align: top;    
+    vertical-align:middle;
+    margin-left: 4px;
+
+}
+
+
+.diventradaDades .botonera{
+    
+    /*width: 300px;
+    text-align:right;*/
+    display: block;
+    
+    
+}
+.diventradaDades .botonera input{
+    width: 80px;
+    display: inline;
+}
+
+
+.peu{
+    display:table;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #848284;;
+    border-bottom: 1px solid #848284;;
+    border-left: 1px solid #848284;
+    border-right: 1px solid #848284;    
+}
+
+.peu .logos_esquerra{
+    display:table-cell;
+    vertical-align:middle;
+    text-align: left;
+}
+.peu .logos_esquerra img{
+    display:inline;
+}
+.peu .text_peu{
+    display:table-cell;
+    vertical-align:middle;
+    text-align: left;
+}
+.peu .logos_dreta{
+    display:table-cell;
+    vertical-align:middle;
+}
+.peu .logos_dreta img{
+    display:inline;
+}
+
+.yui-content{
+    margin-top:10px;
+    border-top:1px solid gray;
+}
+.yui-dt table{
+    width: 100%;
+}
+.yui-skin-sam .mprocessionaria tr.yui-dt-even {
+    background-color:#fdbb8f;
+}
+.yui-skin-sam .mprocessionaria tr.yui-dt-odd{
+    background-color:#fae1b0;
+}
+.yui-skin-sam .mprocessionaria tr.yui-dt-even td.yui-dt-asc,
+.yui-skin-sam .mprocessionaria tr.yui-dt-even td.yui-dt-desc { background-color:#e0a67f; } /* light blue sorted */
+.yui-skin-sam .mprocessionaria tr.yui-dt-odd td.yui-dt-asc,
+.yui-skin-sam .mprocessionaria tr.yui-dt-odd td.yui-dt-desc { background-color:#ead2a4; } /* dark blue sorted */
+
+
+.yui-skin-sam .msequera tr.yui-dt-even {
+    background-color:#afe0b1;
+}
+.yui-skin-sam .msequera tr.yui-dt-odd{
+    background-color:#d7fcd9;
+}
+.yui-skin-sam .msequera tr.yui-dt-even td.yui-dt-asc,
+.yui-skin-sam .msequera tr.yui-dt-even td.yui-dt-desc { background-color:#9cd39e; } /* light blue sorted */
+.yui-skin-sam .msequera tr.yui-dt-odd td.yui-dt-asc,
+.yui-skin-sam .msequera tr.yui-dt-odd td.yui-dt-desc { background-color:#d7fcd9; } /* dark blue sorted */
+
+.control_mapa_processionaria .bloc_control_mapa .boto input{
+    background-color: #cccccc;
+}
+.anar_carto{    
+    width:410px;    
+    display:block;
+    margin-top: 10px;
+    
+}
+.element_anar_carto{    
+    display:inline;
+}
+.element_anar_carto input{
+    display:inline;
+    margin-bottom: 2px;
+}
+
+.element_anar_carto select{    
+    width: 90px;
+}
+
+.ampliTotal{    
+    width: 692px;
+}
+
+.complet{
+    width: 265px;
+}
+
+.completTextArea{
+    width: 261px;
+}
+
+.scroll{
+   overflow: auto;  
+}
+
+.tauladadesobservacions{
+    height: 200px;
+    width: 440px;
+}
+
+.tauladadesestimacionssequera{
+    height: 110px;
+    width: 850px;
+}
+
+.tauladadesestimacions{
+    height: 110px;
+    width: 420px;
+}
+
+.taulatransecte{
+    height: 450px;
+    width: 850px;
+}
+
+.taularegeneracio{
+    height: 250px;
+    width: 650px;
+}
+
+.dina4{
+    height: 1300px;
+    width: 595px;
+}
+
+.espai{
+    text-align: center;
+    height: 300px;
+}
+
+.quadresmoduls{
+    width: 300px;
+    height: 200px;
+}
+
+
+.yuimenubaritem{
+   width: 200px;
+}
+
+HR {
+    page-break-after: always;
+}
+
+.avis {
+    color: red;
+}
+
+.avis p{
+    text-decoration:underline;
+}

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/hibernate.properties" />
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" >
+        <property name="lobHandler">
+<!--    <bean class="org.springframework.jdbc.support.lob.OracleLobHandler">
+      <property name="nativeJdbcExtractor">-->
+      <bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+<!--        <bean class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" />-->
+<!--        <bean class="org.springframework.jdbc.support.nativejdbc.C3P0NativeJdbcExtractor"/>-->
+<!--      </property>
+    </bean>-->
+  </property>
+
+        <property name="mappingResources" >
+            <list>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/SIPANAuthority.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Usuari.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/RegistreUsuari.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Especie.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/GrauInfestacio.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Afectacio.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/TipusBosc.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Orientacio.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Municipi.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Comarca.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Provincia.hbm.xml</value>
+
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/DadaObservacio.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/CausaDecaiment.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/CausaDecaimentDanyAbiotic.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/DistribucioArbresAfectats.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/RegeneracioEspecieForestal.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/ArbreTransecteSequera.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/AfectacioEstimada.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/AfectacioEstimadaDanyAbiotic.hbm.xml</value>
+                <value>cat/creaf/afectaciobosc/dao/hibernate/model/Foto.hbm.xml</value>
+
+                <value>cat/creaf/sia/sipan/cartografia_www/model/CoordenadaWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/GeometriaObjecteSIPAN.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/GeometriaWrapper.hbm.xml</value>
+
+
+                <value>cat/creaf/sia/sipan/cartografia_www/model/LiniaWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/LiniaObjecteSIPANWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PoligonObjecteSIPANWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PoligonWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PoliLiniaWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PoliPoligonWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PoliPuntWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PuntWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/PuntObjecteSIPANWrapper.hbm.xml</value>
+                <value>cat/creaf/sia/sipan/cartografia_www/model/Escala.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+<!--                <prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+                <prop key="hibernate.connection.url">${hibernate.connection.url}</prop>
+                <prop key="hibernate.connection.driver_class">${hibernate.connection.driver_class}</prop>
+                <prop key="hibernate.connection.username">${hibernate.connection.username}</prop>
+                <prop key="hibernate.connection.password">${hibernate.connection.password}</prop>
+                <prop key="hibernate.connection.pool_size">${hibernate.connection.pool_size}</prop>
+                <prop key="hibernate.connection.dialect">${hibernate.connection.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.connection.provider_class">${hibernate.connection.provider_class}</prop>
+                <prop key="hibernate.c3p0.min_size">${hibernate.c3p0.min_size}</prop>
+                <prop key="hibernate.c3p0.max_size">${hibernate.c3p0.max_size}</prop>-->
+                
+                <prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+                <prop key="hibernate.connection.url">${hibernate.connection.url}</prop>
+                <prop key="hibernate.connection.driver_class">${hibernate.connection.driver_class}</prop>
+                <prop key="hibernate.connection.username">${hibernate.connection.username}</prop>
+                <prop key="hibernate.connection.password">${hibernate.connection.password}</prop>
+                <prop key="hibernate.connection.pool_size">${hibernate.connection.pool_size}</prop>
+                <prop key="hibernate.connection.dialect">${hibernate.connection.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.connection.provider_class">${hibernate.connection.provider_class}</prop>
+                <prop key="hibernate.c3p0.min_size">${hibernate.c3p0.min_size}</prop>
+                <prop key="hibernate.c3p0.max_size">${hibernate.c3p0.max_size}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!--bean id="menuService" class="cat.creaf.frames_www.controladors.MenuService" /-->
+
+    <bean id="SIPANService" class="MSIPANGeneral.SIPANService">
+        <property name="DAO" ref="SIPANDAO"/>
+    </bean>
+
+    <bean id="SIPANDAO" class="MSIPANDAOHibernate.SIPANDAOHibernate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="afectacioServei" class="cat.creaf.afectaciobosc.www.service.AfectacioService">
+        <property name="afectacioDAO" ref="afectacioDAO"/>
+    </bean>
+
+    <bean id="afectacioDAO" class="cat.creaf.afectaciobosc.dao.hibernate.AfectacioDAOHibernate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean name="openSessionInViewInterceptor"
+        class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="25000000" />
+        <property name="uploadTempDir" value="uploadDirResource" />
+    </bean>
+
+    <bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+        <constructor-arg value="C:/AplicacionsWEB/AfectacioBosc/grafics_temp" />
+    </bean>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethods" expression="execution(* cat.creaf.afectaciobosc.www.service.AfectacioService.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+    </aop:config>
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+
+
+
+    <aop:config>
+        <aop:pointcut id="seguretatServiceMethods" expression="execution(* cat.creaf.mseguretat_www.SeguretatServei.*(..))" />
+        <aop:advisor advice-ref="txAdviceSeguretat" pointcut-ref="seguretatServiceMethods" />
+    </aop:config>
+
+    <tx:advice id="txAdviceSeguretat" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="registrarEntradaUsuari" propagation="REQUIRED" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+</beans>
+

@@ -1,0 +1,667 @@
+@charset "utf-8";
+
+/* CSSs YUI
+@import url('http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css');
+@import url('http://yui.yahooapis.com/3.0.0/build/cssfonts/fonts-min.css');
+@import url('http://yui.yahooapis.com/3.0.0/build/cssgrids/grids-min.css');
+@import url('http://yui.yahooapis.com/3.0.0/build/cssbase/base-min.css');
+@import url('http://yui.yahooapis.com/2.8.0r4/build/assets/skins/sam/skin.css');
+@import url('yui_sipan.css');*/
+
+@import url('importsYUI.css');
+@import url('yui_sipan.css');
+
+/* NAVEGACIO */
+/*@import url('estilGlobal.css');
+@import url('estilSIPAN.css');*/
+/*@import url('estilActuacions.css');
+@import url('estilEspecies.css');
+/*@import url('estilSIPANIE.css');*/
+
+/********************************** SIPAN *************************************/
+/*                      ----- CODIS DE COLORS -----
+                            color       background
+    sipan_mintegrador:      #630000;    #FFD5D5;
+    sipan_menps:            #006600;    #DBFFB3;
+    sipan_mactuacions:      #000C69;    #BFC7FE;
+    sipan_minformes:        #BC1908;    #FEC8C2;
+    sipan_mrequeriments:    #FF7B11;    #FEBE88;
+    sipan_mgeologia:        #864500;    #FEE0BF;
+    sipan_mespecies:        #CC0099;    #FEBFEF;
+
+*/
+/**************************** login *************************/
+.cos_pagina_inicial{
+    text-align: center;
+    height: 400px;
+    background-color:#eeeeee;
+    border: 1px solid;
+    position:relative;
+}
+.login{
+    height: 15px;
+}
+.login_inici{
+    padding-top: 80px;
+}
+.login_inici form{
+    position:relative;
+
+}
+p.errorlogin{
+    color: red;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 30px;
+    display:table;
+}
+.login_inici .controls_login{
+    display:table;
+    border:none;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.login_inici .usuari{
+    display:table-row;
+    text-align:right;
+}
+.separador_files_taula{
+    height: 5px;
+}
+.login_inici .pwd{
+    display:table-row;
+    text-align:right;
+}
+.login_inici p input{
+    width: 100px;
+}
+.login_inici .boto{
+    margin-top: 10px;
+    display:block;
+    text-align:center;
+}
+
+
+/**************************** logout *************************/
+.logout {
+    text-align:right;
+}
+.logout form{
+    display: block;
+}
+.logout a.boto{
+    display: inline;
+    font-size:12px;
+    margin-left: 20px;
+}
+.logout input {
+    display: inline;
+    width: 70px;
+    height: 18px;
+    font-family:"Times New Roman", Times, serif;
+}
+.logout label{
+    display: inline;
+    height: 18px;
+    font-size:12px;
+    font-family:"Times New Roman", Times, serif;
+}
+
+/**************************** HEADER *************************/
+.header{
+    text-align:center;
+    border-top: 1px solid #848284;;
+    border-bottom: 1px solid #848284;;
+    border-left: 1px solid #848284;
+    border-right: 1px solid #848284;;
+    background-color:#DEDBDE;
+    margin-bottom: 1px;
+}
+.header h1{
+
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:18px;
+    color:#373737;
+    padding: 0px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+/**************************** MENU *************************/
+
+
+/**************************** COS ****************************/
+/*--------------------------- MÒDUL ----------------------*/
+.modul{
+    border-top: 6px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    margin-bottom: 6px solid;
+}
+
+.modul h2{
+    text-align:left;
+    font-size:16px;
+    padding:0px;
+    margin-top:0px;
+    margin-bottom:0px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+/*--------------------------- EINA ----------------------*/
+.eina{
+    margin: 1px;
+    font-size:12px;
+}
+.barraestat{
+    background-color:#CCCCCC;
+    text-align:right;
+    padding: 1px;
+    height: 20px;
+
+}
+.control_eina{
+    text-align:center;
+
+}
+.element_control_eina{
+    display:inline;
+    margin-right: 20px;
+}
+.titoleina{
+    font-size:14px;
+    height: 20px;
+    background-color:#BBBBBB;
+
+}
+.descripcioeina{
+    font-size: 12px;
+    padding: 3px;
+    background-color:#EEEEEE;
+    margin-bottom: 2px;
+    overflow:auto;
+}
+.peueina{
+
+}
+/**************************** FITXA *************************/
+/*.......................... BARRA ICONES EINES FITXA ......*/
+
+.eines_fitxa{
+    display: block;
+    height: 20px;
+    width: 100%;
+}
+
+.eines_fitxa .veure_pdf{
+    float: right;
+    margin-left: 3px;
+    height:16px;
+    width:16px;
+    background: url(../grafics/page_white_acrobat.png) no-repeat;
+}
+/*.......................... BLOC DADES FITXA ................................*/
+.bloc_dades_fitxa{
+
+    margin-bottom: 1px;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    padding-bottom: 10px;
+    display: table;
+    width: 100%;
+}
+
+.bloc_dades_fitxa p{    
+    display:table-row;    
+    width: 100%;
+}
+.camp_dades_fitxa{
+    margin-left: 5px;
+    font-weight: bold;
+    text-align: right;
+    display:table-cell;
+    width: 20%;
+    padding-top: 5px;
+}
+.valor_dades_fitxa{
+    padding-top: 5px;
+    padding-left: 5px;
+    display:table-cell;
+    width: 80%;
+}
+.bloc_dades_fitxa .separador_text{
+    border-bottom: 1px dotted grey;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    display:table-cell;
+
+}
+/************************** IMATGES *+*****************************************/
+/************************** GR�FIQUES******************************************/
+.grafica{
+    text-align: center;    
+}
+.grafica img{
+    border: 1px solid grey;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+/*************************** DOCUMENTS ***************************************/
+.contenidor_documents{
+    width: 700px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+.contenidor_documents li{
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+/**************************** MAPES *************************/
+.panell_carto{
+    width: 100%;
+    display:table;
+    background-color: white;
+    margin-bottom:2px;
+}
+.camp_mapa{    
+    margin-top: 5px;
+    float:right;
+}
+.controls_mida_mapa li{
+    float: left;
+    visibility:hidden;
+}
+.control_capes{
+    margin-top: 5px;
+    float:left;
+    position: relative;
+}
+.control_capes ul {
+    margin-top:0px;
+    margin-left:0px;
+    margin-right:0px;
+    display:block;
+    width: 100%;
+}
+.capa{    
+    display: table;
+    width: 220px;
+    margin-top: 1px;
+    border-top: 5px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+
+}
+.botons_capa{
+    float:right;
+}
+.titol_capa{
+    display:table;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    margin-left:3px;
+}
+.mapmoltpetit {
+    width: 400px;
+    height: 200px;
+    margin-left:0px;
+}
+
+.mappetit {
+    width: 500px;
+    height: 300px;    
+    margin-left:0px;
+}
+.mapmitja {
+    text-align:center;
+    width: 500px;
+    height: 400px;    
+    margin-left:20px;
+}
+.mapgran {
+    width: 650px;
+    height: 500px;
+    margin-left:20px;
+}
+/**************************** FOOTER *************************/
+.peu{
+    margin-top: 1px;
+    text-align:center;
+    border-top: 1px solid #848284;;
+    border-bottom: 1px solid #848284;;
+    border-left: 1px solid #848284;
+    border-right: 1px solid #848284;;
+    background-color:#DEDBDE;    
+    display:block;
+
+}
+.peu p{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:10px;
+    color:#373737;
+    top: 12px;
+    display:block;
+    vertical-align:middle;    
+    margin: 2px;
+
+}
+
+
+/**************************** MÒDULS *************************/
+.sipan_menps {
+    border-color: #006600;
+    background-color:  #DBFFB3;
+}
+.sipan_menps h2{
+    color: #006600;
+    border-left-color: #006600;
+    border-right-color:#006600;
+}
+.sipan_mintegrador {
+    border-color: #630000;
+    background-color:  #FFD5D5;
+}
+.sipan_mintegrador h2{
+    color: #630000;
+}
+.sipan_mactuacions{
+    background-color: #BFC7FE;
+    border-color: #000C69;
+}
+.sipan_mactuacions h2{
+    color: #000C69;
+    border-left-color: #000C69;
+    border-right-color:#000C69;
+}
+.sipan_minformes{
+    background-color: #FEC8C2;
+    border-color: #BC1908;
+}
+.sipan_mrequeriments{
+    background-color: #FEBE88;
+    border-color: #FF7B11;
+}
+.sipan_mespecies{
+    border-color: #CC0099;
+    background-color: #FEBFEF;
+}
+.sipan_mgeologia{
+    background-color: #FEE0BF;
+    border-color: #864500;
+}
+/*************************** GENERAL *************************/
+body{
+    background-color:#FFFFFF;
+}
+
+
+/*************************** MODUL INTEGRADOR *************************/
+input.boto{
+    background-color: #fad9d9;
+}
+
+.botonsmapagran ul li{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.botonsmapagran ul li.especies{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #CC0099;
+}
+
+.botonsmapagran ul li.actuacions{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #000C69;
+    color:#FFFFFF;
+}
+
+.botonsmapagran ul li.informes{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #BC1908;
+    color:#FFFFFF;
+}
+
+.botonsmapagran ul li.requeriments{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #FF7B11;
+    color:#FFFFFF;
+}
+
+.botonsmapagran ul li.enps{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #277914;
+    color:#FFFFFF;
+
+}
+
+.botonsmapagran ul li.geologia{
+    list-style:none;
+    margin:2px;
+    padding:2px;
+    background-color: #864500;
+    color:#FFFFFF;    
+}
+
+.mapacomplet {
+    width: 100%;
+    height: 570px;
+    margin-left:0px;
+    z-index: 0;
+}
+
+div.mapagran{
+    float: left;
+    width: 75%;
+    display:inline;
+}
+
+div.botonsmapagran{
+    float: right;
+    width: 20%;
+
+}
+
+a.veurecapa{
+    background: url(../grafics/eye.png) no-repeat;
+    display:inline-block;
+    height:20px;
+    width:20px;
+}
+
+a.noveurecapa{
+    background: url(../grafics/eye_no.png) no-repeat;
+    display:inline-block;
+    height:20px;
+    width:20px;
+}
+
+div.botoneraUpDown{
+    display:inline-block;
+    height:32px;
+    width:16px;
+}
+
+div.subBotoneraUp{
+    height:16px;
+    width:16px;
+    background: url(../grafics/up_nav.gif) no-repeat;
+}
+
+div.subBotoneraDown{
+    height:16px;
+    width:16px;
+    background: url(../grafics/down_nav.gif) no-repeat;
+}
+
+a.kml{
+    background: url(../grafics/kml.png) no-repeat;
+    display:inline-block;
+    height:20px;
+    width:20px;
+}
+
+a.print{
+    background: url(../grafics/impressora.png) no-repeat;
+    display:inline-block;
+    height:20px;
+    width:20px;
+    text-decoration: none;
+}
+
+div.blocGranRelatiuEsquerra {
+    width:85%;
+
+}
+
+div.blocGranRelatiuDret {    
+    width:15%;
+}
+
+
+.botodigitalitzar{
+    background: url(../grafics/polygon.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+}
+
+.botodigitalitzarpunt{
+    background: url(../grafics/bullet_black.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+}
+
+.botomoure{
+    background: url(../grafics/pan_open.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+
+}
+
+.botoesborrar{
+    background: url(../grafics/cross.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+    text-decoration: none;
+}
+
+.botoeditar{
+    background: url(../grafics/pencil.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+    text-decoration: none;
+}
+
+.botozoomfinestra{
+    background: url(../grafics/zoom-fit_20x20.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+
+}
+
+.botoinfo{
+    background: url(../grafics/information.png) center center no-repeat;
+    text-indent: -4em;
+    overflow: hidden;
+    padding: 0 .75em;
+    width: 2em;
+    height: 2em;
+
+}
+
+.iconesnavegadors{
+    position:absolute;
+    bottom:0px;
+    left: 300px;
+    padding-bottom: 5px;
+}
+.iconesnavegadors img{
+    padding-left: 7px;
+    vertical-align: bottom;
+}
+
+.linkEsborrar{
+    background: url(../grafics/cross.png) no-repeat;
+    display:inline-block;
+    height:16px;
+    width:16px;
+}
+
+#llistat{
+    z-index: 1000;
+}
+
+.centre{
+    text-align: center;
+}
+
+.eines_fitxa .veure_excel{
+    float: right;
+    margin-left: 3px;
+    height:16px;
+    width:16px;
+    background: url(../grafics/page_excel.png) no-repeat;
+}
+
+.eines_fitxa .veure_shape{
+    float: right;
+    margin-left: 3px;
+    height:16px;
+    width:16px;
+    background: url(../grafics/page_shp.png) no-repeat;
+}
+
+.columnaesquerra{
+    width:400px;
+}
+
+.separadorGran{
+    height: 30px;
+    display: block;
+}
+
+.separadorPetit{
+    height: 10px;
+    display: block;
+}
+
+.separadormoltpetit{
+    height: 5px;
+    display: block;
+}
