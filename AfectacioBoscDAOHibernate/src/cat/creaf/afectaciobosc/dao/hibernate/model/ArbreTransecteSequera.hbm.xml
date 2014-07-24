@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.ArbreTransecteSequera" schema="AfectacioBosc" table="ArbreTransecteSequera">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <many-to-one name="sequera" class="cat.creaf.afectaciobosc.model.Sequera" column="IdSequera"/>
+    <many-to-one name="especie" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie"/>
+    <property name="estrat">
+      <column length="100" name="Estrat"/>
+    </property>
+    <property name="classeDiametrica">
+      <column length="100" name="ClasseDiam"/>
+    </property>
+    <property name="estatArbres">
+      <column length="100" name="EstatArbres"/>
+    </property>
+    <property name="afectacioCapcada">
+      <column length="100" name="AfectacioCapc"/>
+    </property>
+    <property name="percentatgeFullaVerda">
+      <column length="100" name="PercFullaVerda"/>
+    </property>
+    <property name="observacions">
+      <column length="4000" name="Observacions"/>
+    </property>
+    <property name="ordre" column="Ordre" type="int" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.Usuari" schema="AfectacioBosc" table="Usuari">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <property name="userName">
+      <column length="100" name="UsrName"/>
+    </property>
+    <property name="password">
+      <column length="100" name="Password"/>
+    </property>
+    <property name="nom">
+      <column length="100" name="Nom"/>
+    </property>
+    <property name="primerCognom">
+      <column length="100" name="PrimerCognom"/>
+    </property>
+    <property name="segonCognom">
+      <column length="100" name="SegonCognom"/>
+    </property>
+    <property name="email">
+      <column length="100" name="CorreuElectronic"/>
+    </property>
+  </class>
+</hibernate-mapping>

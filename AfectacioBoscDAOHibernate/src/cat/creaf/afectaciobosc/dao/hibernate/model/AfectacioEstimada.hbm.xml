@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.AfectacioEstimada" schema="AfectacioBosc" table="AfectacioEstima">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <many-to-one name="sequera" class="cat.creaf.afectaciobosc.model.Sequera" column="IdSequera"/>
+    <many-to-one name="especie" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie"/>
+    <property name="recobriment">
+      <column length="100" name="Recobriment"/>
+    </property>
+    <property name="afectacio">
+      <column length="100" name="Afectacio"/>
+    </property>
+    <property name="arbre">
+      <column length="100" name="Arbre"/>
+    </property>
+    <property name="ordre" column="Ordre" type="int" />
+    <property name="mortalitatString">
+      <column length="1" name="Mortalitat"/>
+    </property>
+    <property name="decoloracioString">
+      <column length="1" name="Decoloracio"/>
+    </property>
+    <property name="defoliacioString">
+      <column length="1" name="Defoliacio"/>
+    </property>
+    <property name="arbresAfectats">
+      <column length="100" name="arbres_afectats_perc"/>
+    </property>
+    <property name="percMortalitat">
+      <column length="1" name="mortalitat_perc"/>
+    </property>
+    <property name="percDefoliacio">
+      <column length="1" name="defoliacio_perc"/>
+    </property>
+    <property name="percDecoloracio">
+      <column length="1" name="decoloracio_perc"/>
+    </property>
+    <property name="canviMortalitat">
+      <column length="1" name="canvi_m"/>
+    </property>
+    <property name="canviDefoliacio">
+      <column length="1" name="canvi_df"/>
+    </property>
+    <property name="canviDecoloracio">
+      <column length="1" name="canvi_dc"/>
+    </property>
+    <property name="rebrots">
+      <column length="1" name="rebrots"/>
+    </property>
+  </class>
+</hibernate-mapping>

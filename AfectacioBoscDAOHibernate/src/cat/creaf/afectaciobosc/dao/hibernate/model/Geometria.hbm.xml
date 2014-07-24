@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="MCartografiav2Obj.Geometria" schema="AfectacioBosc" table="Geometria">
+        <id name="idString" type="string" unsaved-value="null">
+            <column name="IdGeometria" not-null="true" sql-type="char(100)"/>
+        </id>
+        <property name="minX">
+            <column name="MINX" />
+        </property>
+        <property name="minY">
+            <column name="MINY" />
+        </property>
+        <property name="maxX">
+            <column name="MAXX" />
+        </property>
+        <property name="maxY">
+            <column name="MAXY" />
+        </property>
+    </class>
+</hibernate-mapping>

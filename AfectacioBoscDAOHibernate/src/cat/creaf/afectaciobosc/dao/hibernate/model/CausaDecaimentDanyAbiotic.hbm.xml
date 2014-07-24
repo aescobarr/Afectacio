@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.CausaDecaimentDanyAbiotic" schema="AfectacioBosc" table="CausaDecaimentDanyAbiotic">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <property name="nom">
+      <column length="100" name="Causa"/>
+    </property>
+<!--    <property name="ordre" column="Ordre" type="int" />
+    <property name="modul">
+      <column length="100" name="Modul"/>
+    </property>-->
+  </class>
+</hibernate-mapping>

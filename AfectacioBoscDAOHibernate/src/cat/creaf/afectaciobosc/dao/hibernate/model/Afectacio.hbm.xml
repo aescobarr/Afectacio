@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.Afectacio" schema="AfectacioBosc" table="Afectacio">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <discriminator column="TipusAfectacio" type="string"/>
+    <property name="data" column="DataObservacio" type="date" />
+    <property name="codi">
+      <column length="50" name="Codi"/>
+    </property>
+    <many-to-one name="comarca" class="cat.creaf.afectaciobosc.model.Comarca" column="IdComarca"/>
+    <property name="observacions">
+      <column length="4000" name="Observacions"/>
+    </property>
+    <property name="areaAfectada" 
+			type="org.hibernatespatial.GeometryUserType" 
+			column="AREAAFECTADA"/>
+    <subclass name="cat.creaf.afectaciobosc.model.Processionaria" discriminator-value="PROCESSIONARIA">
+        <join table="PROCESSIONARIA" schema="AFECTACIOBOSC">
+            <key column="Id"/>
+            <many-to-one name="tipusBosc" class="cat.creaf.afectaciobosc.model.TipusBosc" column="IdTipusBosc"/>
+            <many-to-one name="orientacio" class="cat.creaf.afectaciobosc.model.Orientacio" column="IdOrientacio"/>
+            <many-to-one name="especie" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie"/>
+            <many-to-one name="grauInfestacio" class="cat.creaf.afectaciobosc.model.GrauInfestacio" column="IdGrauInfestacio"/>
+            <property name="alcada" column="Alcada" type="double" />
+            <property name="codiAgent1">
+                <column length="50" name="CodiAgent1"/>
+            </property>
+            <property name="codiAgent2">
+                <column length="50" name="CodiAgent2"/>
+            </property>
+            <property name="alcadaMitjanaArbres" column="AlcadaMitjanaArbres" type="double"/>
+        </join>
+    </subclass>
+    <subclass name="cat.creaf.afectaciobosc.model.Nevada" discriminator-value="NEVADA">
+        <bag name="dadesObservacions" cascade="all" inverse="true">
+            <key column="IdNevada" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.DadaObservacio"/>
+        </bag>
+        <join table="Nevada" schema="AFECTACIOBOSC">
+            <key column="Id"/>
+            <many-to-one name="terme" class="cat.creaf.afectaciobosc.model.Municipi" column="IdMunicipi"/>
+            <property name="nomCami">
+                <column length="500" name="NomCami"/>
+            </property>
+            <property name="longitudKm" column="LongitudKM" type="double"/>
+            <property name="codiAgent1">
+                <column length="50" name="CodiAgent1"/>
+            </property>
+            <property name="codiAgent2">
+                <column length="50" name="CodiAgent2"/>
+            </property>
+        </join>
+    </subclass>
+    <subclass name="cat.creaf.afectaciobosc.model.Sequera" discriminator-value="SEQUERA">
+        <bag name="causesDecaiment" schema="AfectacioBosc" table="Decaiment">
+            <key column="IdSequera"/>
+            <many-to-many class="cat.creaf.afectaciobosc.model.CausaDecaiment" column="IdCausa"/>
+        </bag>
+        <bag name="regeneracionsEspeciesForestals" cascade="all,delete-orphan" inverse="true" order-by="ordre asc">
+            <key column="IdSequera" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.RegeneracioEspecieForestal"/>
+        </bag>
+        <bag name="arbresTransecte" cascade="all,delete-orphan" inverse="true" order-by="ordre asc">
+            <key column="IdSequera" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.ArbreTransecteSequera"/>
+        </bag>
+        <bag name="afectacionsEstimades" cascade="all,delete-orphan" inverse="true" order-by="ordre asc">
+            <key column="IdSequera" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.AfectacioEstimada"/>
+        </bag>
+        <bag name="fotos" cascade="all,delete-orphan" inverse="true">
+            <key column="IdAfectacio" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.Foto"/>
+        </bag>
+<!--        <idbag name="fotos" table="FotosSequera" cascade="all">
+            <collection-id column="IdFotoSequera" type="java.lang.String">
+                <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+            </collection-id>
+            <key column="IdSequera"/>
+            <many-to-many column="IdFoto" class="MMediaObj.Foto"/>
+        </idbag>-->
+        <join table="Sequera" schema="AFECTACIOBOSC">
+            <key column="Id"/>
+            <property name="nouOAntic">
+                <column length="1" name="NouOAntic"/>
+            </property>
+            <property name="arbresNousAfectats">
+                <column length="1" name="ArbresNousAfectats"/>
+            </property>
+            <property name="pendent">
+                <column length="100" name="Pendent"/>
+            </property>
+            <property name="orientacio">
+                <column length="100" name="Orientacio"/>
+            </property>
+            <property name="posicioPendent">
+                <column length="100" name="PosicioPendent"/>
+            </property>
+            <property name="disposicioPendent">
+                <column length="100" name="DisposicioPendent"/>
+            </property>
+            <property name="presenciaSoquesRecentsString">
+                <column length="1" name="SoquesRecents"/>
+            </property>
+            <property name="presenciaSoquesAntiguesString">
+                <column length="1" name="SoquesAntigues"/>
+            </property>
+            <many-to-one name="especie1Soca" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie1Soca"/>
+            <many-to-one name="especie2Soca" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie2Soca"/>
+            <many-to-one name="especie3Soca" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie3Soca"/>
+            <many-to-one name="tipusBosc" class="cat.creaf.afectaciobosc.model.TipusBosc" column="TipusBosc"/>
+            <many-to-one name="especie1TipusBosc" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie1TipusBosc"/>
+            <many-to-one name="especie2TipusBosc" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie2TipusBosc"/>
+            <many-to-one name="especie3TipusBosc" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie3TipusBosc"/>
+            <property name="aclaridaDeMilloraString">
+                <column length="1" name="AclaridaMillora"/>
+            </property>
+            <property name="estassadaString">
+                <column length="1" name="Estassada"/>
+            </property>
+            <property name="talladaDeRegeneracioString">
+                <column length="1" name="Tallada_Regen"/>
+            </property>
+            <property name="talladaDeSeleccioString">
+                <column length="1" name="Tallada_Selec"/>
+            </property>
+            <many-to-one name="distribucioArbresAfectats" class="cat.creaf.afectaciobosc.model.DistribucioArbresAfectats" column="IdDistribucioArbres"/>
+            <property name="codiAgent1">
+                <column length="50" name="CodiAgent1"/>
+            </property>
+            <property name="codiAgent2">
+                <column length="50" name="CodiAgent2"/>
+            </property>
+            <property name="coordenadaXPuntObservacio" column="UTMX" type="double"/>
+            <property name="coordenadaYPuntObservacio" column="UTMY" type="double"/>
+            <property name="orientacioFoto" column="OrientFoto" type="integer"/>
+<!--            <property name="transecte"
+			type="org.hibernatespatial.GeometryUserType"
+			column="Transecte"/>-->
+        </join>
+    </subclass>
+
+    <subclass name="cat.creaf.afectaciobosc.model.DanyAbiotic" discriminator-value="DANYABIOTIC">
+        <bag name="afectacionsEstimades" cascade="all,delete-orphan" inverse="true" order-by="ordre asc">
+            <key column="IdDanyAbiotic" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.AfectacioEstimadaDanyAbiotic"/>
+        </bag>
+        <bag name="causesDecaiment" schema="AfectacioBosc" table="DecaimentDanyAbiotic">
+            <key column="IdDanyAbiotic"/>
+            <many-to-many class="cat.creaf.afectaciobosc.model.CausaDecaimentDanyAbiotic" column="IdCausa"/>
+        </bag>
+        <join table="DanyAbiotic" schema="AFECTACIOBOSC">
+            <key column="Id"/>
+            <property name="dataApreciacioInicial" column="DataApreciacioInicial" type="date" />
+            <property name="dataDadesDefinitives" column="DataDadesDefinitives" type="date" />
+            <property name="dataValidacio" column="DataValidacio" type="date" />
+            <property name="codiAgent1">
+                <column length="50" name="CodiAgent1"/>
+            </property>
+            <property name="codiAgent2">
+                <column length="50" name="CodiAgent2"/>
+            </property>
+            <property name="nomEnginyer1">
+                <column length="100" name="NomEnginyer1"/>
+            </property>
+            <property name="nomEnginyer2">
+                <column length="100" name="NomEnginyer2"/>
+            </property>
+            <property name="excepcionalitatMeteorologica">
+                <column length="500" name="ExcepcionalitatMeteorologica"/>
+            </property>
+            <property name="esMostreigSistematicString">
+                <column length="1" name="EsMostreigSistematic"/>
+            </property>
+            <property name="observacionsMostreigSistematic">
+                <column length="500" name="ObservacionsMostreigSistematic"/>
+            </property>
+            <property name="percentatgeAmbTreballsGestioAparent" column="PctgAmbTreballsGestioAparent" type="double"/>
+            <property name="percentatgeSenseTreballsGestioAparent" column="PctgSenseTreballsGestioAparent" type="double"/>
+            <property name="percentatgeBoscRegeneracioNatural" column="PctgBoscRegeneracioNatural" type="double"/>
+            <property name="percentatgeRepoblacioArtificial" column="PctgRepoblacioArtificial" type="double"/>
+            <property name="percentatgePlantacioEspeciesCreixementRapid" column="PctgPlantacioEspeciesRapid" type="double"/>
+            <property name="grauAfectacioXarxaViaria">
+                <column length="1" name="GrauAfectacioXarxaViaria"/>
+            </property>
+        </join>
+    </subclass>
+
+
+<!--    <subclass name="cat.creaf.afectaciobosc.model.DanyAbiotic" discriminator-value="DANYMECANIC">
+        <bag name="causesDecaiment" schema="AfectacioBosc" table="DecaimentDanyMecanic">
+            <key column="IdDanyMecanic"/>
+            <many-to-many class="cat.creaf.afectaciobosc.model.CausaDecaiment" column="IdCausa"/>
+        </bag>
+        <bag name="afectacionsEstimades" cascade="all,delete-orphan" inverse="true" order-by="ordre asc">
+            <key column="IdDanyMecanic" on-delete="cascade"/>
+            <one-to-many class="cat.creaf.afectaciobosc.model.AfectacioEstimadaDanyMecanic"/>
+        </bag>
+        <join table="DanyMecanic" schema="AFECTACIOBOSC">
+            <key column="Id"/>
+            <many-to-one name="grauInfestacio" class="cat.creaf.afectaciobosc.model.GrauInfestacio" column="IdGrauInfestacio"/>
+            <many-to-one name="distribucioArbresAfectats" class="cat.creaf.afectaciobosc.model.DistribucioArbresAfectats" column="IdDistribucioArbres"/>
+            <property name="codiAgent1">
+                <column length="50" name="CodiAgent1"/>
+            </property>
+            <property name="codiAgent2">
+                <column length="50" name="CodiAgent2"/>
+            </property>
+            <property name="orientacioFoto" column="OrientFoto" type="integer"/>
+            <property name="grauAfectacio" column="GrauAfectacio" type="double"/>
+            <property name="dataEpisodi" column="Data" type="date" />
+        </join>
+    </subclass>-->
+  </class>
+</hibernate-mapping>

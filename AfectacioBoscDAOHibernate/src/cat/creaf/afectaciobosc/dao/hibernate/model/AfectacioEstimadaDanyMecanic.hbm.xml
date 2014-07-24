@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.AfectacioEstimadaDanyMecanic" schema="AfectacioBosc" table="AfectacioEstimaDanyMecanic">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <many-to-one name="danyMecanic" class="cat.creaf.afectaciobosc.model.DanyMecanic" column="IdDanyMecanic"/>
+    <many-to-one name="especie" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie"/>
+    <property name="recobriment">
+      <column length="100" name="Recobriment"/>
+    </property>
+    <property name="afectacio">
+      <column length="100" name="Afectacio"/>
+    </property>
+    <property name="alcada">
+      <column length="100" name="Alcada"/>
+    </property>
+    <property name="ordre" column="Ordre" type="int" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.DadaObservacio" schema="AfectacioBosc" table="DadaObservacioNevada">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <many-to-one name="nevada" class="cat.creaf.afectaciobosc.model.Nevada" column="IdNevada"/>
+    <many-to-one name="especie" class="cat.creaf.afectaciobosc.model.Especie" column="IdEspecie"/>
+    <property name="pistaParcialmentAfectat" column="PistaParcialmentAfectat" type="int"/>
+    <property name="pistaTotalmentAfectat" column="PistaTotalmentAfectat" type="int"/>
+    <property name="franjaParcialmentAfectat" column="FranjaParcialmentAfectat" type="int"/>
+    <property name="franjaTotalmentAfectat" column="FranjaTotalmentAfectat" type="int"/>
+  </class>
+</hibernate-mapping>

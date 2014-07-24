@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="MSeguretatObj.RegistreUsuari" schema="AfectacioBosc" table="RegistreUsuaris">
+        <id name="idString" type="string" unsaved-value="-1">
+            <column name="Id" not-null="true" sql-type="char(100)"/>
+            <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+        </id>
+        <many-to-one class="MSeguretatObj.Usuari" column="IdUsuari" name="usuari"/>
+        <property name="ip">
+            <column length="15" name="IP"/>
+        </property>
+        <property name="entrada" type="timestamp" column="HoraEntrada"/>
+        <property name="sortida" type="timestamp" column="HoraSortida"/>
+        <property name="modul">
+            <column length="100" name="IdModul"/>
+        </property>
+    </class>
+</hibernate-mapping>

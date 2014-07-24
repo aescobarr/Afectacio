@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//hibernate/hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="cat.creaf.afectaciobosc.model.Especie" schema="AfectacioBosc" table="Especie">
+    <id name="idString" type="string" unsaved-value="-1">
+      <column name="ID" not-null="true" sql-type="char(100)"/>
+      <generator class="GUtilDAOHibernate.GeneradorIDs"/>
+    </id>
+    <property name="nom">
+      <column length="200" name="NomEspecie"/>
+    </property>
+    <joined-subclass name="cat.creaf.afectaciobosc.model.EspecieAmbProcessionaria" schema="AfectacioBosc" table="EspeciesProcessionaria">
+        <key column="Id"/>
+    </joined-subclass>
+    <joined-subclass name="cat.creaf.afectaciobosc.model.EspecieAmbSequera" schema="AfectacioBosc" table="EspecieSequera">
+        <key column="Id"/>
+    </joined-subclass>
+    <joined-subclass name="cat.creaf.afectaciobosc.model.EspecieAmbSequeraSoca" schema="AfectacioBosc" table="EspecieSequeraSoca">
+        <key column="Id"/>
+    </joined-subclass>
+    <joined-subclass name="cat.creaf.afectaciobosc.model.EspecieAmbSequeraTipusBosc" schema="AfectacioBosc" table="EspecieSequeraTipusBosc">
+        <key column="Id"/>
+    </joined-subclass>
+  </class>
+</hibernate-mapping>
